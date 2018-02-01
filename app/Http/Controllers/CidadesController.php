@@ -25,4 +25,42 @@ class CidadesController extends Controller
 
         return response()->json($cidade);
     }
+
+    public function store(Request $request)
+    {
+        $cidade = new Cidade();
+        $cidade->fill($request->all());
+        $cidade->save();
+
+        return response()->json($cidade, 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $cidade = Cidade::find($id);
+
+        if(!$cidade) {
+            return response()->json([
+                'message'   => 'Record not found',
+            ], 404);
+        }
+
+        $cidade->fill($request->all());
+        $cidade->save();
+
+        return response()->json($cidade);
+    }
+
+    public function destroy($id)
+    {
+        $cidade = Cidade::find($id);
+
+        if (!$cidade) {
+            return response()->json([
+                'message'   => 'Record not found',
+            ], 404);
+        }
+
+        $cidade->delete();
+    }
 }

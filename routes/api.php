@@ -18,13 +18,15 @@ use Illuminate\Http\Request;
 //     return response()->json(['message' => 'Jobs API', 'status' => 'Connected']);;
 // });
 
-Route::get('/', function () {
-    return response()->json(['message' => 'SimpleCRM API', 'status' => 'Connected']);;
-});
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/', function () {
+        return response()->json(['message' => 'SimpleCRM API', 'status' => 'Connected']);;
+    });
 
-Route::resource('ufs', 'UfsController');
-Route::resource('cidades', 'CidadesController');
+    Route::resource('ufs', 'UfsController');
+    Route::resource('cidades', 'CidadesController');
 
-Route::get('/', function () {
-    return redirect('api');
+    Route::get('/', function () {
+        return redirect('api');
+    });
 });
