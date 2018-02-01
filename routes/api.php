@@ -13,6 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     //return $request->user();
+//     return response()->json(['message' => 'Jobs API', 'status' => 'Connected']);;
+// });
+
+Route::get('/', function () {
+    return response()->json(['message' => 'SimpleCRM API', 'status' => 'Connected']);;
+});
+
+Route::resource('ufs', 'UfsController');
+Route::resource('cidades', 'CidadesController');
+
+Route::get('/', function () {
+    return redirect('api');
 });
