@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthenticateRequest;
 use JWTAuth;
 use Hash;
 
 class AuthController extends Controller
 {
-    public function authenticate(Request $request) {
+    public function authenticate(AuthenticateRequest $request) {
       $credentials = $request->only('email', 'senha');
 
       $usuario = Usuario::where('email', $credentials['email'])->first();

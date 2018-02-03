@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Uf;
 use Illuminate\Http\Request;
+use App\Http\Requests\UfRequest;
 
 class UfsController extends Controller
 {
@@ -30,7 +31,7 @@ class UfsController extends Controller
         return response()->json($uf);
     }
 
-    public function store(Request $request)
+    public function store(UfRequest $request)
     {
         $uf = new Uf();
         $uf->fill($request->all());
@@ -39,7 +40,7 @@ class UfsController extends Controller
         return response()->json($uf, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(UfRequest $request, $id)
     {
         $uf = Uf::find($id);
 
