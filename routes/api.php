@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     //return $request->user();
-//     return response()->json(['message' => 'Jobs API', 'status' => 'Connected']);;
-// });
-
 Route::middleware(['auth:api'])->group(function () {
     Route::get('/', function () {
         return response()->json(['message' => 'SimpleCRM API', 'status' => 'Connected']);;
@@ -30,3 +25,5 @@ Route::middleware(['auth:api'])->group(function () {
         return redirect('api');
     });
 });
+
+Route::post('auth/login', 'AuthController@authenticate');

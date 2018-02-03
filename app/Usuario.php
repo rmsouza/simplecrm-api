@@ -10,5 +10,7 @@ class Usuario extends Model
 
     protected $fillable = ['nome', 'sobrenome', 'email', 'telefone', 'funcao', 'status', 'senha'];
 
+    protected $hidden = ['senha'];
+
     protected $dates = ['deleted_at'];
 }
