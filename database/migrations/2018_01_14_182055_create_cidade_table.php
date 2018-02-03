@@ -20,7 +20,7 @@ class CreateCidadeTable extends Migration
             $table->foreign('uf_id')
                 ->references('id')
                 ->on('uf')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->timestamps();
             $table->softDeletes();
         });
