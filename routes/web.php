@@ -13,5 +13,5 @@
 
 Route::get('/', function () {
     // return view('welcome');
-    return response()->json(['message' => 'Jobs API', 'status' => 'Connected']);
+    return response()->json(['message' => 'SimpleCRM API', 'status' => 'Connected']);
 });
