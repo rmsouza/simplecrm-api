@@ -31,14 +31,13 @@ class AuthController extends Controller
 
       $token = JWTAuth::fromUser($usuario);
 
-      // Get expiration time
-      $objectToken = JWTAuth::setToken($token);
-      $expiration = JWTAuth::decode($objectToken->getToken())->get('exp');
+      // // Get expiration time
+      // $objectToken = JWTAuth::setToken($token);
+      // $expiration = JWTAuth::decode($objectToken->getToken())->get('exp');
 
       return response()->json([
         'access_token' => $token,
-        'token_type' => 'bearer',
-        'expires_in' => JWTAuth::decode()->get('exp')
+        'token_type' => 'bearer'
       ]);
     }
 }

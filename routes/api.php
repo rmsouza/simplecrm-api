@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware(['auth:api'])->group(function () {
+Route::middleware(['jwt.auth'])->group(function () {
     Route::get('/', function () {
         return response()->json(['message' => 'SimpleCRM API', 'status' => 'Connected']);;
     });
