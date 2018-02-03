@@ -4,6 +4,7 @@ namespace App;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
@@ -13,7 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class Usuario extends Model implements AuthenticatableContract, CanResetPasswordContract, JWTSubject
 {
-    use Notifiable, Authenticatable, CanResetPassword;
+    use SoftDeletes, Notifiable, Authenticatable, CanResetPassword;
 
     protected $table = 'usuario';
 
