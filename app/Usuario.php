@@ -24,6 +24,16 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 
     protected $dates = ['deleted_at'];
 
+    public function convocacoes()
+    {
+        return $this->hasMany('App\Convocacao');
+    }
+
+    public function contas()
+    {
+        return $this->hasMany('App\Conta');
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

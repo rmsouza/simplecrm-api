@@ -24,4 +24,19 @@ class Conta extends Model
     {
         return $this->belongsTo('App\Cidade');
     }
+
+    public function informacoesti()
+    {
+        return $this->hasMany('App\InformacaoTI');
+    }
+
+    public function oportunidades()
+    {
+        return $this->hasMany('App\Oportunidade');
+    }
+
+    public function contatos()
+    {
+        return $this->hasManu('App\Contato');
+    }
 }
