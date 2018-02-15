@@ -12,8 +12,8 @@ class CidadeSeed extends Seeder
     public function run()
     {
         App\Cidade::create([
-            'nome' => 'Salvador',
-            'uf_id' => 2
+            'nome' => 'Brasília',
+            'uf_id' => 1
         ]);
     }
 }

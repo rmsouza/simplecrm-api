@@ -12,12 +12,12 @@ class ContaSeed extends Seeder
     public function run()
     {
         App\Conta::create([
-            'nome' => 'Tribunal do Trabalho',
+            'nome' => 'Tribunal Regional do Trabalho',
             'sigla' => 'TRT',
-            'site' => 'www.trt.gov.br',
-            'endereco' => 'SQB',
+            'site' => 'www.trt1.gov.br',
+            'endereco' => 'SQB 100',
             'usuario_id' => 1,
-            'cidade_id' => 4
+            'cidade_id' => 1
         ]);
     }
 }

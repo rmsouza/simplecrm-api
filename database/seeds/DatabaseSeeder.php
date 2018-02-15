@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        //$this->call(UfSeed::class);
-        //$this->call(CidadeSeed::class);
-        $this->call(UsuarioSeed::class);
-        //$this->call(ContaSeed::class);
+        // $this->call(UfSeed::class);
+        // $this->call(CidadeSeed::class);
+        // $this->call(UsuarioSeed::class);
+        // $this->call(ContaSeed::class);
+        $this->call(FaseVendaSeed::class);
 
         Model::reguard();
     }

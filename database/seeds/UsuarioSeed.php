@@ -18,7 +18,7 @@ class UsuarioSeed extends Seeder
             'telefone' => '6199999999',
             'funcao' => 'Diretor',
             'status' => 'Ativo',
-            'senha' => bcrypt('123')
+            'senha' => bcrypt('123456')
         ]);
     }
 }
