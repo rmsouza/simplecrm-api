@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Oportunidade;
 use Illuminate\Http\Request;
 
 class OportunidadeController extends Controller

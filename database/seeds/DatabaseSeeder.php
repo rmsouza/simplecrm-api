@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(CidadeSeed::class);
         // $this->call(UsuarioSeed::class);
         // $this->call(ContaSeed::class);
-        $this->call(FaseVendaSeed::class);
+        $this->call(CargoSeed::class);
+        $this->call(TipoAcaoSeed::class);
+        $this->call(ContatoSeed::class);
 
         Model::reguard();
     }

@@ -20,6 +20,11 @@ Route::middleware(['jwt.auth'])->group(function () {
 
     Route::resource('ufs', 'UfsController');
     Route::resource('cidades', 'CidadesController');
+    Route::resource('conta', 'ContaController');
+    Route::resource('fasevenda', 'FaseVendaController');
+    Route::resource('oportunidade', 'OportunidadeController');
+    Route::resource('contato', 'ContatoController');
+    Route::resource('tipoacao', 'TipoAcaoController');
 
     Route::get('/', function () {
         return redirect('api');

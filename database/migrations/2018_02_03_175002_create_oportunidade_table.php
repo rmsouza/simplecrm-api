@@ -16,7 +16,7 @@ class CreateOportunidadeTable extends Migration
         Schema::create('oportunidade', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 150);
-            $table->float('valor')->nullable();
+            $table->float('valor', 14, 2)->nullable();
             $table->date('dataAbertura');
             $table->date('dataFechamento')->nullable();
             $table->text('comentario')->nullable();
