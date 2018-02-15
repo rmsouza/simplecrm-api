@@ -17,7 +17,7 @@ class CreateAcaoTable extends Migration
             $table->increments('id');
             $table->date('data');
             $table->time('horario');
-            $table->text('descricao');
+            $table->text('descricao')->nullable();
             $table->string('status', 30);
             $table->integer('oportunidade_id')->unsigned();
             $table->foreign('oportunidade_id')
@@ -25,7 +25,7 @@ class CreateAcaoTable extends Migration
                 ->on('oportunidade')
                 ->onDelete('restrict');
 
-            $table->integer('contato_id')->unsigned();
+            $table->integer('contato_id')->unsigned()->nullable();
             $table->foreign('contato_id')
                 ->references('id')
                 ->on('contato')

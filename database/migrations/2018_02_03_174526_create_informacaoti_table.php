@@ -17,13 +17,13 @@ class CreateInformacaotiTable extends Migration
             $table->increments('id');
             $table->string('nome', 100);
             $table->string('fornecedor', 100);
-            $table->integer('quantidadeLicencas');
+            $table->integer('quantidadeLicencas')->nullable();
             $table->integer('conta_id')->unsigned();
             $table->foreign('conta_id')
                 ->references('id')
                 ->on('conta')
                 ->onDelete('restrict');
-            $table->integer('modelocontratacao_id')->unsigned();
+            $table->integer('modelocontratacao_id')->unsigned()->nullable();
             $table->foreign('modelocontratacao_id')
                 ->references('id')
                 ->on('modelocontratacao')

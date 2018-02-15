@@ -18,7 +18,7 @@ class CreateUsuarioTable extends Migration
             $table->string('nome', 100);
             $table->string('sobrenome', 100);
             $table->string('email', 100);
-            $table->string('telefone', 50);
+            $table->string('telefone', 50)->nullable();
             $table->string('funcao', 30);
             $table->string('status', 30);
             $table->string('senha', 255);

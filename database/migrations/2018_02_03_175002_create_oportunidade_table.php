@@ -16,13 +16,13 @@ class CreateOportunidadeTable extends Migration
         Schema::create('oportunidade', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 150);
-            $table->float('valor');
+            $table->float('valor')->nullable();
             $table->date('dataAbertura');
-            $table->date('dataFechamento');
-            $table->text('comentario');
+            $table->date('dataFechamento')->nullable();
+            $table->text('comentario')->nullable();
             $table->string('status', 30);
             $table->string('probabilidadeGanho', 50);
-            $table->integer('conta_id')->unsigned();
+            $table->integer('conta_id')->unsigned()->nullable();
             $table->foreign('conta_id')
                 ->references('id')
                 ->on('conta')

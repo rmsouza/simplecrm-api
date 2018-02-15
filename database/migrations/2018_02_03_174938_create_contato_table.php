@@ -15,16 +15,16 @@ class CreateContatoTable extends Migration
     {
         Schema::create('contato', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email', 150);
+            $table->string('email', 150)->nullable();
             $table->string('nome', 100);
-            $table->string('sobrenome', 100);
+            $table->string('sobrenome', 100)->nullable();
             $table->integer('nivelInfluencia');
             $table->integer('conta_id')->unsigned();
             $table->foreign('conta_id')
                 ->references('id')
                 ->on('conta')
                 ->onDelete('restrict');
-            $table->integer('cargo_id')->unsigned();
+            $table->integer('cargo_id')->unsigned()->nullable();
             $table->foreign('cargo_id')
                 ->references('id')
                 ->on('cargo')
