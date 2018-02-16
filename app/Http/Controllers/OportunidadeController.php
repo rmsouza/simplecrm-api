@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Oportunidade;
 use Illuminate\Http\Request;
+use JWTAuth;
 
 class OportunidadeController extends Controller
 {
@@ -27,7 +28,19 @@ class OportunidadeController extends Controller
               ->get();
 
         } else {
-          $oportunidades = Oportunidade::with(['fasevenda', 'conta'])->get();
+
+          $userData = JWTAuth::parseToken()->authenticate()->toArray();
+
+          if ($userData['funcao'] === 'Gerente de Contas') {
+            $oportunidades = Oportunidade::with(['fasevenda', 'conta'])
+              ->leftjoin('conta as ct','ct.id', '=', 'oportunidade.conta_id')
+              ->where('ct.usuario_id', $userData['id'])
+              ->select('oportunidade.*')
+              ->get();
+          } else {
+            $oportunidades = Oportunidade::with(['fasevenda', 'conta'])->get();
+          }
+
         }
 
         return response()->json($oportunidades);

@@ -20,7 +20,7 @@ Route::middleware(['jwt.auth'])->group(function () {
 
     Route::resource('ufs', 'UfsController');
     Route::resource('cidades', 'CidadesController');
-    Route::resource('conta', 'ContaController');
+    Route::resource('contas', 'ContaController');
     Route::resource('fasevenda', 'FaseVendaController');
     Route::resource('oportunidade', 'OportunidadeController');
     Route::resource('contato', 'ContatoController');

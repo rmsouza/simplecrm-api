@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Conta;
+use JWTAuth;
 
 class ContaController extends Controller
 {
   public function index()
   {
-      $contas = Conta::with(['usuario', 'cidade'])->get();
+      $userData = JWTAuth::parseToken()->authenticate()->toArray();
+
+      if ($userData['funcao'] === 'Gerente de Contas') {
+        $contas = Conta::with(['usuario', 'cidade'])
+          ->where('usuario_id', $userData['id'])
+          ->get();
+      } else {
+        $contas = Conta::with(['usuario', 'cidade'])->get();
+      }
+
       return response()->json($contas);
   }
 
