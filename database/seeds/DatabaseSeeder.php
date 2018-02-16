@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UfSeed::class);
         // $this->call(CidadeSeed::class);
-        // $this->call(UsuarioSeed::class);
+//        $this->call(UsuarioSeed::class);
         // $this->call(ContaSeed::class);
-        $this->call(CargoSeed::class);
-        $this->call(TipoAcaoSeed::class);
-        $this->call(ContatoSeed::class);
+        // $this->call(CargoSeed::class);
+        // $this->call(TipoAcaoSeed::class);
+        // $this->call(ContatoSeed::class);
+        //$this->call(OportunidadeSeed::class);
 
         Model::reguard();
     }

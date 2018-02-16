@@ -12,11 +12,11 @@ class UsuarioSeed extends Seeder
     public function run()
     {
         App\Usuario::create([
-            'nome' => 'João Gabriel',
-            'sobrenome' => 'Menezes',
-            'email' => 'joao@gmail.com',
+            'nome' => 'Edson',
+            'sobrenome' => 'Silveira',
+            'email' => 'edson@company.com',
             'telefone' => '6199999999',
-            'funcao' => 'Diretor',
+            'funcao' => 'Pré-vendas',
             'status' => 'Ativo',
             'senha' => bcrypt('123456')
         ]);

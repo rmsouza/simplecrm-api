@@ -7,10 +7,74 @@ use Illuminate\Http\Request;
 
 class OportunidadeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $oportunidades = Oportunidade::with(['fasevenda', 'conta'])->get();
+        $dataInicial = $request->query('dataInicial');
+        $dataFinal = $request->query('dataFinal');
+        $quarter = $request->query('quarter');
+
+        if (!empty($quarter)) {
+
+          $oportunidades = Oportunidade::with(['fasevenda', 'conta'])
+              ->where($this->getQuarterQuery($quarter))
+              ->get();
+
+        } elseif (!empty($dataInicial) || !empty($dataFinal)) {
+
+          $where = $this->getDateQuery($dataInicial, $dataFinal);
+          $oportunidades = Oportunidade::with(['fasevenda', 'conta'])
+              ->where($where)
+              ->get();
+
+        } else {
+          $oportunidades = Oportunidade::with(['fasevenda', 'conta'])->get();
+        }
+
         return response()->json($oportunidades);
+    }
+
+    protected function getQuarterQuery($quarter)
+    {
+        $year = date('Y');
+        switch ($quarter) {
+          case '1':
+            return [
+                ['dataAbertura', '>=', $year . '-01-01'],
+                ['dataAbertura', '<=', $year . '-03-31']
+              ];
+            break;
+          case '2':
+            return [
+                ['dataAbertura', '>=', $year . '-04-01'],
+                ['dataAbertura', '<=', $year . '-06-30']
+              ];
+            break;
+          case '3':
+            return [
+                ['dataAbertura', '>=', $year . '-07-01'],
+                ['dataAbertura', '<=', $year . '-09-30']
+              ];
+            break;
+          case '4':
+            return [
+                ['dataAbertura', '>=', $year . '-10-01'],
+                ['dataAbertura', '<=', $year . '-12-31']
+              ];
+            break;
+        }
+    }
+
+    protected function getDateQuery($dataInicial, $dataFinal) {
+      $where = array();
+
+      if (!empty($dataInicial)) {
+        $where[] = ['dataAbertura', '>=', $dataInicial];
+      }
+
+      if (!empty($dataFinal)) {
+        $where[] = ['dataAbertura', '<=', $dataFinal];
+      }
+      return $where;
     }
 
     public function show($id)

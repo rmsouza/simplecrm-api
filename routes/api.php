@@ -25,6 +25,7 @@ Route::middleware(['jwt.auth'])->group(function () {
     Route::resource('oportunidade', 'OportunidadeController');
     Route::resource('contato', 'ContatoController');
     Route::resource('tipoacao', 'TipoAcaoController');
+    Route::resource('usuarios', 'UsuarioController');
 
     Route::get('/', function () {
         return redirect('api');
